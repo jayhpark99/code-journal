@@ -1,0 +1,54 @@
+body {
+  font-family: 'Proza Libre', sans-serif;
+  color: black;
+  background-color: rgba(240, 240, 240, 1);
+}
+
+img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+button {
+  margin: 1rem 0;
+  background-color: rgba(86, 43, 129, 1);
+  color: white;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+}
+
+header {
+  background-color: rgba(86, 43, 129, 1);
+  color: white;
+  padding: 1rem 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0.5rem 0;
+}
+
+input {
+  width: 100%;
+  padding: 1rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 5px;
+  border: rgba(182, 182, 182, 1) solid 1px;
+}
+
+input:focus {
+  outline-color: rgba(86, 43, 129, 1);
+}
+
+.notes {
+  padding-bottom: 10rem;
+}
+
+.right {
+  text-align: right;
+}

@@ -41,14 +41,14 @@ input {
   border: rgba(182, 182, 182, 1) solid 1px;
 }
 
+input:focus {
+  outline-color: rgba(86, 43, 129, 1);
+}
+
 .notes {
   padding-bottom: 10rem;
 }
 
 .right {
   text-align: right;
-}
-
-input:focus {
-  border: rgba(86, 43, 129, 1) solid 1px;
 }

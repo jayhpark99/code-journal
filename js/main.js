@@ -23,6 +23,8 @@ function handleSubmit(event) {
   data.entries.unshift(dataObj);
   $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  var enTree = renderEntry(dataObj);
+  $ul.prepend(enTree);
 }
 
 function renderEntry(entry) {
@@ -47,3 +49,16 @@ function renderEntry(entry) {
   colDiv2.appendChild(p);
   return li;
 }
+
+var $ul = document.querySelector('ul');
+
+// document.addEventListener('DOMContentLoaded', function (event) {
+//   var previous = localStorage.getItem('javascript-local-storage');
+//   if (previous !== null) {
+//     data.entries = JSON.parse(previous);
+//   }
+//   for (var i = 0; i < data.entries.length; i++) {
+//     var enTree = renderEntry(data.entries[i]);
+//     $ul.appendChild(enTree);
+//   }
+// });

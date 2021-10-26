@@ -25,6 +25,7 @@ function handleSubmit(event) {
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   var enTree = renderEntry(dataObj);
   $ul.prepend(enTree);
+  $noEntriesMessage.className = 'text-center hidden';
 }
 
 function renderEntry(entry) {
@@ -51,6 +52,7 @@ function renderEntry(entry) {
 }
 
 var $ul = document.querySelector('ul');
+var $noEntriesMessage = document.querySelector('.text-center');
 
 document.addEventListener('DOMContentLoaded', function (event) {
   var previous = localStorage.getItem('javascript-local-storage');
@@ -60,6 +62,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     var enTree = renderEntry(data.entries[i]);
     $ul.appendChild(enTree);
+  }
+  if (data.entries.length !== 0) {
+    $noEntriesMessage.className = 'text-center hidden';
   }
 });
 

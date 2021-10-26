@@ -18,8 +18,9 @@
   width: 100%;
 }
 
-.padoff {
-  padding: 0;
+.space-between {
+  justify-content: space-between;
+  display: flex;
 }
 
 @media screen and (min-width: 768px) {

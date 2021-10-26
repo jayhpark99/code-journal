@@ -52,13 +52,33 @@ function renderEntry(entry) {
 
 var $ul = document.querySelector('ul');
 
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   var previous = localStorage.getItem('javascript-local-storage');
-//   if (previous !== null) {
-//     data.entries = JSON.parse(previous);
-//   }
-//   for (var i = 0; i < data.entries.length; i++) {
-//     var enTree = renderEntry(data.entries[i]);
-//     $ul.appendChild(enTree);
-//   }
-// });
+document.addEventListener('DOMContentLoaded', function (event) {
+  var previous = localStorage.getItem('javascript-local-storage');
+  if (previous !== null) {
+    data.entries = JSON.parse(previous);
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    var enTree = renderEntry(data.entries[i]);
+    $ul.appendChild(enTree);
+  }
+});
+
+var $navItem = document.querySelector('a');
+$navItem.addEventListener('click', showEntries);
+
+var $save = document.querySelector('.submit');
+var $entries = document.querySelector('#entries');
+$save.addEventListener('click', showEntries);
+
+function showEntries(event) {
+  $submit.className = 'hidden';
+  $entries.className = '';
+}
+
+var $new = document.querySelector('.new');
+$new.addEventListener('click', showForm);
+
+function showForm(event) {
+  $submit.className = '';
+  $entries.className = 'hidden';
+}

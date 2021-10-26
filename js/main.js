@@ -24,3 +24,26 @@ function handleSubmit(event) {
   $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
+
+function renderEntry(entry) {
+  var li = document.createElement('li');
+  var rowDiv = document.createElement('div');
+  rowDiv.setAttribute('class', 'row');
+  li.appendChild(rowDiv);
+  var colDiv1 = document.createElement('div');
+  colDiv1.setAttribute('class', 'column-half');
+  rowDiv.appendChild(colDiv1);
+  var img = document.createElement('img');
+  img.setAttribute('src', entry.photoUrl);
+  colDiv1.appendChild(img);
+  var colDiv2 = document.createElement('div');
+  colDiv2.setAttribute('class', 'column-half');
+  rowDiv.appendChild(colDiv2);
+  var h2 = document.createElement('h2');
+  h2.textContent = entry.title;
+  colDiv2.appendChild(h2);
+  var p = document.createElement('p');
+  p.textContent = entry.notes;
+  colDiv2.appendChild(p);
+  return li;
+}

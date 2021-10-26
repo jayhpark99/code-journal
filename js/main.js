@@ -21,14 +21,6 @@ function handleSubmit(event) {
   };
   data.nextEntryId += 1;
   data.entries.unshift(dataObj);
-  $title.value = '';
-  $photoUrl.value = '';
-  $notes.value = '';
+  $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-}
-window.addEventListener('beforeunload', handleUnload);
-function handleUnload(event) {
-  var myStorage = window.localStorage;
-  var JSONdata = JSON.stringify(data.entries);
-  myStorage.setItem('javascript-local-storage', JSONdata);
 }

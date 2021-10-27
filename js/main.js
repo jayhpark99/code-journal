@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var previousView = localStorage.getItem('data-view');
   if (previousView === 'entries') {
     changeView('entries');
+    data.view = 'entries';
   }
 }
 );

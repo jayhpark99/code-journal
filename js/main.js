@@ -26,6 +26,7 @@ function handleSubmit(event) {
   var enTree = renderEntry(dataObj);
   $ul.prepend(enTree);
   $noEntriesMessage.className = 'text-center hidden';
+  changeView('entries');
 }
 
 function renderEntry(entry) {
@@ -63,16 +64,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
   if (data.entries.length !== 0) {
     $noEntriesMessage.className = 'text-center hidden';
   }
-  data.view = JSON.parse(localStorage.getItem('javascript-local-storage')).view;
   changeView(data.view);
 }
 );
 
 var $navItem = document.querySelector('a');
 $navItem.addEventListener('click', checkView);
-
-var $save = document.querySelector('.submit');
-$save.addEventListener('click', checkView);
 
 var $new = document.querySelector('.new');
 $new.addEventListener('click', checkView);

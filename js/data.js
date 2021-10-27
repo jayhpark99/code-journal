@@ -15,6 +15,6 @@ function handleUnload(event) {
 }
 
 var previousData = localStorage.getItem('javascript-local-storage');
-if (previousData.entries !== null) {
-  data.entries = JSON.parse(previousData).entries;
+if (previousData !== null) {
+  data = JSON.parse(previousData);
 }

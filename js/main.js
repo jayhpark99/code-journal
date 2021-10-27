@@ -31,6 +31,7 @@ function handleSubmit(event) {
 
 function renderEntry(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', entry.entryId);
   var rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row');
   li.appendChild(rowDiv);
@@ -101,5 +102,6 @@ $ul.addEventListener('click', handleEdit);
 function handleEdit(event) {
   if (event.target.tagName === 'I') {
     changeView('entry-form');
+    data.editing = event.target.closest('li').getAttribute('data-entry-id');
   }
 }

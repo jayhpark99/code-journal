@@ -96,3 +96,10 @@ function changeView(viewType) {
   }
   data.view = viewType;
 }
+
+$ul.addEventListener('click', handleEdit);
+function handleEdit(event) {
+  if (event.target.tagName === 'I') {
+    changeView('entry-form');
+  }
+}

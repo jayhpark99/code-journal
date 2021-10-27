@@ -13,22 +13,21 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Proza+Libre&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="container">
       <div class="column-full">
-        <h2>Code Journal</h2>
+        <h2>Code Journal</h2> <a href="#" data-view="entries">Entries</a>
       </div>
     </div>
   </header>
   <main class="container">
-    <form>
+    <form class ="view" data-view="entry-form">
       <h1>New Entry</h1>
-      <div class="row" data-view="entry-form">
+      <div class="row">
         <div class="column-half">
           <img class="photo" src="images/placeholder-image-square.jpg" alt="photo">
         </div>
@@ -42,12 +41,23 @@
           <h3>Notes</h3>
           <input class="notes" type="text" required>
           <div class="right">
-            <button class="submit" type="submit">SAVE</button>
+            <button class="submit" type="submit" data-view="entries">SAVE</button>
           </div>
         </div>
       </div>
     </form>
+
+    <div id="entries" class="view hidden" data-view="entries">
+      <div class="space-between">
+        <h1>Entries</h1><button class="new" data-view="entry-form">NEW</button>
+      </div>
+       <p class="text-center">No Entries have been recorded.</p>
+      <ul>
+      </ul>
+    </div>
+
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

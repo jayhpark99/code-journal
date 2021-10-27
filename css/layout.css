@@ -18,8 +18,17 @@
   width: 100%;
 }
 
-.padoff {
-  padding: 0;
+.space-between {
+  justify-content: space-between;
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.shift-down {
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 768px) {

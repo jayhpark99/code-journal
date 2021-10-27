@@ -25,8 +25,13 @@ header {
   padding: 1rem 0;
 }
 
+h1 {
+  display: inline-block;
+}
+
 h2 {
   margin: 0;
+  display: inline-block;
 }
 
 h3 {
@@ -49,6 +54,32 @@ input:focus {
   padding-bottom: 10rem;
 }
 
+.new {
+  padding: 0.5rem 1rem;
+  margin: auto 0;
+}
+
 .right {
   text-align: right;
+}
+
+ul {
+  line-height: 1.6;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li img {
+  margin: 1rem 0;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(41, 41, 41, 1);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin-left: 1rem;
 }

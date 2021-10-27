@@ -20,12 +20,12 @@
   <header>
     <div class="container">
       <div class="column-full">
-        <h2>Code Journal</h2> <a href="#">Entries</a>
+        <h2>Code Journal</h2> <a href="#" data-view="entries">Entries</a>
       </div>
     </div>
   </header>
   <main class="container">
-    <form data-view="entry-form">
+    <form class ="view" data-view="entry-form">
       <h1>New Entry</h1>
       <div class="row">
         <div class="column-half">
@@ -41,15 +41,15 @@
           <h3>Notes</h3>
           <input class="notes" type="text" required>
           <div class="right">
-            <button class="submit" type="submit">SAVE</button>
+            <button class="submit" type="submit" data-view="entries">SAVE</button>
           </div>
         </div>
       </div>
     </form>
 
-    <div id="entries" class="hidden" data-view="entries">
+    <div id="entries" class="view hidden" data-view="entries">
       <div class="space-between">
-        <h1>Entries</h1><button class="new">NEW</button>
+        <h1>Entries</h1><button class="new" data-view="entry-form">NEW</button>
       </div>
        <p class="text-center">No Entries have been recorded.</p>
       <ul>

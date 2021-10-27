@@ -12,4 +12,5 @@ function handleUnload(event) {
   var myStorage = window.localStorage;
   var JSONdata = JSON.stringify(data.entries);
   myStorage.setItem('javascript-local-storage', JSONdata);
+  myStorage.setItem('data-view', data.view);
 }

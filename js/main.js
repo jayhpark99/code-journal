@@ -44,6 +44,7 @@ function renderEntry(entry) {
   rowDiv.appendChild(colDiv2);
   var h2 = document.createElement('h2');
   h2.textContent = entry.title;
+  h2.setAttribute('class', 'shift-down');
   colDiv2.appendChild(h2);
   var p = document.createElement('p');
   p.textContent = entry.notes;
@@ -66,24 +67,40 @@ document.addEventListener('DOMContentLoaded', function (event) {
   if (data.entries.length !== 0) {
     $noEntriesMessage.className = 'text-center hidden';
   }
-});
+  var previousView = localStorage.getItem('data-view');
+  if (previousView === 'entries') {
+    changeView('entries');
+  }
+}
+);
 
 var $navItem = document.querySelector('a');
-$navItem.addEventListener('click', showEntries);
+$navItem.addEventListener('click', checkView);
 
 var $save = document.querySelector('.submit');
-var $entries = document.querySelector('#entries');
-$save.addEventListener('click', showEntries);
-
-function showEntries(event) {
-  $submit.className = 'hidden';
-  $entries.className = '';
-}
+$save.addEventListener('click', checkView);
 
 var $new = document.querySelector('.new');
-$new.addEventListener('click', showForm);
+$new.addEventListener('click', checkView);
+$new.addEventListener('click', changeToEntryForm);
 
-function showForm(event) {
-  $submit.className = '';
-  $entries.className = 'hidden';
+function changeToEntryForm() {
+  data.view = 'entry-form';
+}
+
+function checkView() {
+  data.view = 'entries';
+  changeView(event.target.getAttribute('data-view'));
+}
+
+var $views = document.querySelectorAll('.view');
+
+function changeView(viewType) {
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === viewType) {
+      $views[i].className = '';
+    } else {
+      $views[i].className = 'hidden';
+    }
+  }
 }

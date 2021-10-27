@@ -56,10 +56,6 @@ var $ul = document.querySelector('ul');
 var $noEntriesMessage = document.querySelector('.text-center');
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  var previous = localStorage.getItem('javascript-local-storage');
-  if (previous !== null) {
-    data.entries = JSON.parse(previous);
-  }
   for (var i = 0; i < data.entries.length; i++) {
     var enTree = renderEntry(data.entries[i]);
     $ul.appendChild(enTree);
@@ -67,11 +63,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
   if (data.entries.length !== 0) {
     $noEntriesMessage.className = 'text-center hidden';
   }
-  var previousView = localStorage.getItem('data-view');
-  if (previousView === 'entries') {
-    changeView('entries');
-    data.view = 'entries';
-  }
+  data.view = JSON.parse(localStorage.getItem('javascript-local-storage')).view;
+  changeView(data.view);
 }
 );
 
@@ -83,14 +76,8 @@ $save.addEventListener('click', checkView);
 
 var $new = document.querySelector('.new');
 $new.addEventListener('click', checkView);
-$new.addEventListener('click', changeToEntryForm);
-
-function changeToEntryForm() {
-  data.view = 'entry-form';
-}
 
 function checkView() {
-  data.view = 'entries';
   changeView(event.target.getAttribute('data-view'));
 }
 
@@ -104,4 +91,5 @@ function changeView(viewType) {
       $views[i].className = 'hidden';
     }
   }
+  data.view = viewType;
 }

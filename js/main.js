@@ -102,6 +102,15 @@ $ul.addEventListener('click', handleEdit);
 function handleEdit(event) {
   if (event.target.tagName === 'I') {
     changeView('entry-form');
-    data.editing = event.target.closest('li').getAttribute('data-entry-id');
+    var currentEdit = parseInt(event.target.closest('li').getAttribute('data-entry-id'));
+    data.editing = currentEdit;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (currentEdit === data.entries[i].entryId) {
+        $title.value = data.entries[i].title;
+        $photoUrl.value = data.entries[i].photoUrl;
+        $notes.value = data.entries[i].notes;
+      }
+    }
+    $img.setAttribute('src', $photoUrl.value);
   }
 }

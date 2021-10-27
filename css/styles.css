@@ -83,3 +83,7 @@ a {
   color: white;
   margin-left: 1rem;
 }
+
+.purple {
+  color: rgba(86, 43, 129, 1);
+}

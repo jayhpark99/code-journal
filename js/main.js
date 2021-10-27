@@ -43,10 +43,16 @@ function renderEntry(entry) {
   var colDiv2 = document.createElement('div');
   colDiv2.setAttribute('class', 'column-half');
   rowDiv.appendChild(colDiv2);
+  var innerDiv = document.createElement('div');
+  colDiv2.appendChild(innerDiv);
+  innerDiv.setAttribute('class', 'space-between');
   var h2 = document.createElement('h2');
   h2.textContent = entry.title;
   h2.setAttribute('class', 'shift-down');
-  colDiv2.appendChild(h2);
+  innerDiv.appendChild(h2);
+  var icon = document.createElement('i');
+  innerDiv.appendChild(icon);
+  icon.setAttribute('class', 'fas fa-pencil-alt shift-down purple');
   var p = document.createElement('p');
   p.textContent = entry.notes;
   colDiv2.appendChild(p);

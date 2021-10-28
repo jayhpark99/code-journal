@@ -9,7 +9,8 @@ img {
   border-radius: 5px;
 }
 
-button {
+.submit,
+.new {
   margin: 1rem 0;
   background-color: rgba(86, 43, 129, 1);
   color: white;
@@ -59,10 +60,6 @@ input:focus {
   margin: auto 0;
 }
 
-.right {
-  text-align: right;
-}
-
 ul {
   line-height: 1.6;
   list-style-type: none;
@@ -86,4 +83,54 @@ a {
 
 .purple {
   color: rgba(86, 43, 129, 1);
+}
+
+.delete-button {
+  font-size: 1rem;
+  text-decoration: underline;
+  color: red;
+}
+
+.modal {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  margin: 6rem auto;
+  background-color: white;
+  padding: 1rem 2.5rem;
+  position: absolute;
+  top: 13rem;
+  right: 0;
+  left: 0;
+  border-radius: 7px;
+}
+
+.confirm {
+  margin: 1rem 0;
+  background-color: rgba(220, 38, 38, 1);
+  color: white;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+}
+
+.cancel {
+  margin: 1rem 0;
+  background-color: rgba(182, 182, 182, 1);
+  color: black;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+}
+
+.background {
+  background-color: rgba(41, 41, 41, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

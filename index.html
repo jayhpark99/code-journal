@@ -40,8 +40,18 @@
         <div class="column-full">
           <h3>Notes</h3>
           <input class="notes" type="text" required>
-          <div class="right">
+          <div class="space-between">
+            <a href="#" class="delete-button not-visible">Delete Entry</a>
             <button class="submit" type="submit" data-view="entries">SAVE</button>
+          </div>
+        </div>
+      </div>
+      <div class="background hidden">
+        <div class="modal hidden">
+          <p>Are you sure you want to delete this entry?</p>
+          <div class="space-between">
+            <a href="#" class="cancel">CANCEL</a>
+            <a href="#" class="confirm">CONFIRM</a>
           </div>
         </div>
       </div>

@@ -13,18 +13,39 @@ function changePhoto(event) {
 $submit.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
-  var dataObj = {
-    title: $title.value,
-    photoUrl: $photoUrl.value,
-    notes: $notes.value,
-    entryId: data.nextEntryId
-  };
-  data.nextEntryId += 1;
-  data.entries.unshift(dataObj);
+  if (data.editing === null) {
+    var dataObj = {
+      title: $title.value,
+      photoUrl: $photoUrl.value,
+      notes: $notes.value,
+      entryId: data.nextEntryId
+    };
+    data.nextEntryId += 1;
+    data.entries.unshift(dataObj);
+    var enTree = renderEntry(dataObj);
+    $ul.prepend(enTree);
+  } else {
+    var editedDataObj = {
+      title: $title.value,
+      photoUrl: $photoUrl.value,
+      notes: $notes.value,
+      entryId: data.editing
+    };
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing === data.entries[i].entryId) {
+        data.entries[i] = editedDataObj;
+      }
+    }
+    var editedEnTree = renderEntry(editedDataObj);
+    var $entries = document.querySelectorAll('li');
+    for (var j = 0; j < $entries.length; j++) {
+      if (parseInt($entries[j].getAttribute('data-entry-id')) === data.editing) {
+        $entries[j].replaceWith(editedEnTree);
+      }
+    }
+  }
   $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var enTree = renderEntry(dataObj);
-  $ul.prepend(enTree);
   $noEntriesMessage.className = 'text-center hidden';
   changeView('entries');
 }
@@ -96,6 +117,7 @@ function changeView(viewType) {
     }
   }
   data.view = viewType;
+  data.editing = null;
 }
 
 $ul.addEventListener('click', handleEdit);

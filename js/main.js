@@ -105,8 +105,7 @@ $new.addEventListener('click', function (event) {
   $submit.reset();
   $deleteButton.className = 'delete-button not-visible';
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $modal.className = 'modal hidden';
-  $background.className = 'modal hidden';
+  closeModal();
 });
 
 function checkView() {
@@ -142,8 +141,7 @@ function handleEdit(event) {
     }
     $img.setAttribute('src', $photoUrl.value);
     $deleteButton.className = 'delete-button';
-    $modal.className = 'modal hidden';
-    $background.className = 'modal hidden';
+    closeModal();
   }
 }
 
@@ -152,15 +150,13 @@ var $modal = document.querySelector('.modal');
 var $background = document.querySelector('.background');
 
 $deleteButton.addEventListener('click', function (event) {
-  $modal.className = 'modal';
-  $background.className = 'background';
+  openModal();
 });
 
 var $cancel = document.querySelector('.cancel');
 var $confirm = document.querySelector('.confirm');
 $cancel.addEventListener('click', function (event) {
-  $modal.className = 'modal hidden';
-  $background.className = 'background hidden';
+  closeModal();
 });
 $confirm.addEventListener('click', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
@@ -179,3 +175,13 @@ $confirm.addEventListener('click', function (event) {
   }
   changeView('entries');
 });
+
+function closeModal() {
+  $modal.className = 'modal hidden';
+  $background.className = 'background hidden';
+}
+
+function openModal() {
+  $modal.className = 'modal';
+  $background.className = 'background';
+}

@@ -13,24 +13,46 @@ function changePhoto(event) {
 $submit.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
-  var dataObj = {
-    title: $title.value,
-    photoUrl: $photoUrl.value,
-    notes: $notes.value,
-    entryId: data.nextEntryId
-  };
-  data.nextEntryId += 1;
-  data.entries.unshift(dataObj);
+  if (data.editing === null) {
+    var dataObj = {
+      title: $title.value,
+      photoUrl: $photoUrl.value,
+      notes: $notes.value,
+      entryId: data.nextEntryId
+    };
+    data.nextEntryId += 1;
+    data.entries.unshift(dataObj);
+    var enTree = renderEntry(dataObj);
+    $ul.prepend(enTree);
+  } else {
+    var editedDataObj = {
+      title: $title.value,
+      photoUrl: $photoUrl.value,
+      notes: $notes.value,
+      entryId: data.editing
+    };
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing === data.entries[i].entryId) {
+        data.entries[i] = editedDataObj;
+      }
+    }
+    var editedEnTree = renderEntry(editedDataObj);
+    var $entries = document.querySelectorAll('li');
+    for (var j = 0; j < $entries.length; j++) {
+      if (parseInt($entries[j].getAttribute('data-entry-id')) === data.editing) {
+        $entries[j].replaceWith(editedEnTree);
+      }
+    }
+  }
   $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var enTree = renderEntry(dataObj);
-  $ul.prepend(enTree);
   $noEntriesMessage.className = 'text-center hidden';
   changeView('entries');
 }
 
 function renderEntry(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', entry.entryId);
   var rowDiv = document.createElement('div');
   rowDiv.setAttribute('class', 'row');
   li.appendChild(rowDiv);
@@ -43,10 +65,16 @@ function renderEntry(entry) {
   var colDiv2 = document.createElement('div');
   colDiv2.setAttribute('class', 'column-half');
   rowDiv.appendChild(colDiv2);
+  var innerDiv = document.createElement('div');
+  colDiv2.appendChild(innerDiv);
+  innerDiv.setAttribute('class', 'space-between');
   var h2 = document.createElement('h2');
   h2.textContent = entry.title;
   h2.setAttribute('class', 'shift-down');
-  colDiv2.appendChild(h2);
+  innerDiv.appendChild(h2);
+  var icon = document.createElement('i');
+  innerDiv.appendChild(icon);
+  icon.setAttribute('class', 'fas fa-pencil-alt shift-down purple');
   var p = document.createElement('p');
   p.textContent = entry.notes;
   colDiv2.appendChild(p);
@@ -89,4 +117,22 @@ function changeView(viewType) {
     }
   }
   data.view = viewType;
+  data.editing = null;
+}
+
+$ul.addEventListener('click', handleEdit);
+function handleEdit(event) {
+  if (event.target.tagName === 'I') {
+    changeView('entry-form');
+    var currentEdit = parseInt(event.target.closest('li').getAttribute('data-entry-id'));
+    data.editing = currentEdit;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (currentEdit === data.entries[i].entryId) {
+        $title.value = data.entries[i].title;
+        $photoUrl.value = data.entries[i].photoUrl;
+        $notes.value = data.entries[i].notes;
+      }
+    }
+    $img.setAttribute('src', $photoUrl.value);
+  }
 }

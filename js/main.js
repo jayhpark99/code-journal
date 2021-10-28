@@ -185,3 +185,17 @@ function openModal() {
   $modal.className = 'modal';
   $background.className = 'background';
 }
+var $icons = document.querySelectorAll('i');
+var $save = document.querySelector('.submit');
+
+var $header = document.querySelector('.header');
+var $colorPick = document.querySelector('#color-pick');
+$colorPick.addEventListener('input', handleColorPick);
+function handleColorPick(event) {
+  $header.style.backgroundColor = event.target.value;
+  $new.style.backgroundColor = event.target.value;
+  $save.style.backgroundColor = event.target.value;
+  for (var i = 0; i < $icons.length; i++) {
+    $icons[i].style.color = event.target.value;
+  }
+}

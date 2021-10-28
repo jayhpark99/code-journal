@@ -20,7 +20,7 @@ img {
   font-size: 1rem;
 }
 
-header {
+.header {
   background-color: rgba(86, 43, 129, 1);
   color: white;
   padding: 1rem 0;
@@ -133,4 +133,11 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#color-pick {
+  height: 2rem;
+  width: 2rem;
+  padding: 1px;
+  margin-right: 0.5rem;
 }

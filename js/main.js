@@ -105,6 +105,8 @@ $new.addEventListener('click', function (event) {
   $submit.reset();
   $deleteButton.className = 'delete-button not-visible';
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $modal.className = 'modal hidden';
+  $background.className = 'modal hidden';
 });
 
 function checkView() {
@@ -140,7 +142,37 @@ function handleEdit(event) {
     }
     $img.setAttribute('src', $photoUrl.value);
     $deleteButton.className = 'delete-button';
+    $modal.className = 'modal hidden';
+    $background.className = 'modal hidden';
   }
 }
 
 var $deleteButton = document.querySelector('.delete-button');
+var $modal = document.querySelector('.modal');
+var $background = document.querySelector('.background');
+
+$deleteButton.addEventListener('click', function (event) {
+  $modal.className = 'modal';
+  $background.className = 'background';
+});
+
+var $cancel = document.querySelector('.cancel');
+var $confirm = document.querySelector('.confirm');
+$cancel.addEventListener('click', function (event) {
+  $modal.className = 'modal hidden';
+  $background.className = 'background hidden';
+});
+$confirm.addEventListener('click', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  var $entries = document.querySelectorAll('li');
+  for (var j = 0; j < $entries.length; j++) {
+    if (parseInt($entries[j].getAttribute('data-entry-id')) === data.editing) {
+      $entries[j].remove();
+    }
+  }
+  changeView('entries');
+});

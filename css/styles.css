@@ -91,6 +91,46 @@ a {
   color: red;
 }
 
-.not-visible {
-  visibility: hidden;
+.modal {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  margin: 6rem auto;
+  background-color: white;
+  padding: 1rem 2.5rem;
+  position: absolute;
+  top: 13rem;
+  right: 0;
+  left: 0;
+  border-radius: 7px;
+}
+
+.confirm {
+  margin: 1rem 0;
+  background-color: rgba(220, 38, 38, 1);
+  color: white;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+}
+
+.cancel {
+  margin: 1rem 0;
+  background-color: rgba(182, 182, 182, 1);
+  color: black;
+  border-width: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1rem;
+}
+
+.background {
+  background-color: rgba(41, 41, 41, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

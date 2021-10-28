@@ -47,6 +47,7 @@ function handleSubmit(event) {
   $submit.reset();
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $noEntriesMessage.className = 'text-center hidden';
+  setColor($colorPick.value);
   changeView('entries');
 }
 
@@ -93,6 +94,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $noEntriesMessage.className = 'text-center hidden';
   }
   changeView(data.view);
+  var previousColor = localStorage.getItem('color');
+  setColor(previousColor);
+  $colorPick.value = previousColor;
 }
 );
 
@@ -185,17 +189,22 @@ function openModal() {
   $modal.className = 'modal';
   $background.className = 'background';
 }
-var $icons = document.querySelectorAll('i');
-var $save = document.querySelector('.submit');
 
+var $save = document.querySelector('.submit');
 var $header = document.querySelector('.header');
 var $colorPick = document.querySelector('#color-pick');
+
 $colorPick.addEventListener('input', handleColorPick);
 function handleColorPick(event) {
-  $header.style.backgroundColor = event.target.value;
-  $new.style.backgroundColor = event.target.value;
-  $save.style.backgroundColor = event.target.value;
+  setColor($colorPick.value);
+}
+
+function setColor(color) {
+  $header.style.backgroundColor = color;
+  $new.style.backgroundColor = color;
+  $save.style.backgroundColor = color;
+  var $icons = document.querySelectorAll('i');
   for (var i = 0; i < $icons.length; i++) {
-    $icons[i].style.color = event.target.value;
+    $icons[i].style.color = color;
   }
 }

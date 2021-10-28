@@ -174,5 +174,8 @@ $confirm.addEventListener('click', function (event) {
       $entries[j].remove();
     }
   }
+  if (data.entries.length === 0) {
+    $noEntriesMessage.className = 'text-center';
+  }
   changeView('entries');
 });

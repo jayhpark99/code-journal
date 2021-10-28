@@ -101,6 +101,11 @@ $navItem.addEventListener('click', checkView);
 
 var $new = document.querySelector('.new');
 $new.addEventListener('click', checkView);
+$new.addEventListener('click', function (event) {
+  $submit.reset();
+  $deleteButton.className = 'delete-button not-visible';
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+});
 
 function checkView() {
   changeView(event.target.getAttribute('data-view'));
@@ -134,5 +139,8 @@ function handleEdit(event) {
       }
     }
     $img.setAttribute('src', $photoUrl.value);
+    $deleteButton.className = 'delete-button';
   }
 }
+
+var $deleteButton = document.querySelector('.delete-button');
